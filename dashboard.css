@@ -1,0 +1,173 @@
+.acontainer
+  {
+    height: 40%;
+  }
+  .topbar
+  {
+    width:96%;
+    border-radius: 10px;
+    margin-left:3%;
+    margin-top: 0.2%;
+  }
+.reguserd
+{
+  margin-left: 40%;
+}
+  ul
+  {
+   
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #46d974;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    padding-bottom: 1%;
+  }
+  li{
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  
+  text-decoration: none;
+  font-size: 17px;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  margin-top: 1%;
+  padding-bottom: 1%;
+  }
+  li span
+  {
+    padding-bottom: 1%;
+
+  }
+  nav{
+    width: 100%;
+  }
+  .nav-item{
+    position: relative;
+    top: 6px;
+    margin-left: 14px;
+  }
+  li:hover{
+    background-color: rgb(221, 221, 221);
+    color: black;
+    border-radius: 10px;
+  }
+  li:hover i{
+    color: #db2222;
+    transition: 0.2s;
+  }
+  #lable_for_registered_user{
+    margin-left: 5%;
+  }
+  .add_data{
+    margin-right: 30%;
+    margin-left: 30%;
+  }
+  #event_selector{
+    float:right;
+  }
+  #org_mail{
+    float:right;
+    width: 48%;
+  }
+  #org_name{
+    float:right;
+    width: 48%;
+  }
+  #org_password{
+    float:right;
+    width: 48%;
+  }
+  .orginazer_password{
+    margin-bottom: 30px;
+  }
+  .orginazer_mail{
+    margin-bottom: 30px;
+  }
+  .orginazer_name{
+    margin-bottom: 30px;
+  }
+  #event_selector{
+    height:30px;
+    width:246px;
+  }
+  .event-name{
+    margin-bottom: 30px;
+  }
+  #orgsubmit{
+    background-color: #46d974;
+    font-weight: bold;
+    padding:2.5%;
+    padding-right: 46%;
+    padding-left: 46%;
+    border-radius: 10px;
+    color: white;    
+    border: none;
+    font-size: 18px;
+  }
+  #delsubmit{
+    width:100%;
+    background-color: #46d974;
+    margin-top: 3%;
+    padding:2.5%;
+    padding-right: 46%;
+    padding-left: 46%;
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;    
+    border: none;
+    font-size: 18px;
+  }
+ 
+
+  #back_to_add{
+    background-color: #46d974;
+    margin-left:20%; 
+    margin-bottom: 20px;
+    padding:1%;
+    padding-right: 20%;
+    padding-left: 20%;
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;    
+    border: none;
+    font-size: 18px;
+  }
+  #container_mt_5
+  {
+    width: 90%;
+    margin-left: 5%;
+  }
+  #containermt-5{
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .avtive
+  {
+    margin-left: 45%;
+  }
+
+  .acontainer img
+  {
+    width:65px;
+    height: 65px;
+   position:absolute;
+   margin-left: 5%;
+  }
+
+  .org_list button
+  {
+    background-color: #46d974;
+    border: none;
+    border-radius: 10px;
+    padding: px;
+  }
+
+  .org_list button:hover
+  {
+    background-color: #818080;
+    color:white;
+  }

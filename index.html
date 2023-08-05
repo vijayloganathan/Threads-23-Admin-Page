@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Threads</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="dashboard.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+      <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+   </head>
+ <body>
+  <div class="container1" id="container1"style ="display: block;">
+    <div class="img">
+      <img src="ThreadsLogo.png" alt="">
+    </div>
+    <div class="loginpg">
+      <div class="form">
+        <form action="#" id ="alogin" method="post">
+          <label id="head">LOGIN PAGE</label>
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" id="ausername" placeholder="Enter Username" name="uname">
+        
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id ="apassword" placeholder="Enter Password" name="psw">
+                
+            <button type="submit" id ="loginbt">Login</button>
+            <label><a href="#" id="aforget">Forget password ?</a></label>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+      <!--dashboard-->
+      <div class="dashboard"  style="display:none;">
+        <div class="acontainer">
+              <nav>
+                 <ul id="topbar" class="topbar">
+                    
+                      <img src="ThreadsLogo.png" alt="">
+                    
+                    <li data-li="reguser" id="reguserbtn" class="reguserd" >
+                       <span class="nav-item"> Registered User</span>
+                    </li>
+                    <li data-li="orginazer" id="orginazerbtn">
+                       <span class="nav-item"> Organizer </span>
+                    </li>
+                    <li data-li="report" id="reportbtn">
+                       <span class="nav-item"> Report</span>
+                    </li>
+                    <li data-li = "logbutton" class="logout"> 
+                        <span class="nav-item"> Logout </span>
+                      </li>
+                 </ul>
+              </nav>
+        </div>
+
+        <div class = "acontent">
+            <!-- for register user-->
+            <div class ="item reguser" id="reguser" >
+                <div class="containermt-5" id="containermt-5">
+                  <div class="searchform">
+                    <form action="#" method="post">
+                    <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+                    <input type="text" id="user_reguser" name="Registered_user"> 
+                      <button type="submit" id="user_reguserbtn" class="btnsearch">Search</button>
+                      </form>
+                    </div>
+                    
+                  <table class="table table-striped" id="my_table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>College</th>
+                      </tr>
+                    </thead>
+                    <tbody id="superadmintbody">
+
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class = "item orginazer" id="orginazer" style="display:none;">
+              <div class = "add_data" id="add_data" style="display: block;">
+                <div class="event-name" id="event-name">
+                  <label for="event-name">Select Event Name:</label>
+                  <select name="event_selector" id = "event_selector">
+                    <option value="">----------Select Event----------</option>
+                    <option value="event1">TECHNICAL QUIZ</option>
+                  <option value="event2">CODEGO</option>
+                  <option value="event3">PAPER PRESENTATION </option>
+                  <option value="event4">TECHNICAL DEBATE </option>
+                  <option value="event5">MATCH THE CODE </option>
+                  <option value="event6">QUIZ HOLIC </option>
+                  <option value="event7">AD ZAP</option>
+                  <option value="event8">MINI GAME </option>
+                  <option value="event9">TREASURE HUNT </option>
+                  <option value="event10">KAROKE </option>
+                  <option value="workshop1">ROBOTIC PAOCESS AUTOMATION</option>
+                  <option value="workshop2">WEBDEVELOPMENT </option>
+                  <option value="workshop3">CYBERSECURITY</option>
+                  <option value="onspotreg">ONSPOT REGESTER</option>
+                  <option value="paymentverify">PAYMENT VERIFY REGESTER</option>
+                  </select>
+                </div>
+                <div class="orginazer_name">
+                  <lable for="orginazer_name">Enter Organizer Name</lable>
+                  <input type="text" id="org_name" name="org_name">
+                </div>
+                <div class="orginazer_mail">
+                  <lable for="orginazer_mail">Enter Organizer Mail-id</lable>
+                  <input type="text" id="org_mail" name="org_mail">
+                </div>
+                <div class="orginazer_password">
+                  <lable for="orginazer_password">Enter Organizer Password</lable>
+                  <input type="text" id="org_password" name="org_password">
+                </div>
+                <div>
+                  <input type="submit" id = "orgsubmit" value = "ADD">
+                  <input type="button" id = "delsubmit" value = "View Data">
+                </div>
+              </div>
+                <div class="containermt-5" id ="container_mt_5" style="display: none;">
+                  <input type="button" id = "back_to_add" value = "Back_to_add_orginazer">
+                  <table class="table table-striped" id="tableorg">
+                    <thead>
+                      <tr>
+                        <th>orginazer_name</th>
+                        <th>orginazer_mailid</th>
+                        <th>event-name</th>
+                        <th>delete</th>
+                      </tr>
+                    </thead>
+                    <tbody id="org_list" class="org_list">
+
+                    </tbody>
+                  </table>
+                </div>
+              
+            </div>
+            <div class = "item report" id="report" style="display:none;">
+              <div class="event-name" id="report_class">
+              <center> <label for="event-name" id="donlab">SELECT EVENT NAME</label> <br>
+                <select name="event_selector" id = "report_selector">
+                  <option value="user">OVERALL REPORT</option>
+                  <option value="event1">TECHNICAL QUIZ REPORT</option>
+                  <option value="event2">CODEGO REPORT</option>
+                  <option value="event3">PAPER PRESENTATION REPORT</option>
+                  <option value="event4">TECHNICAL DEBATE REPORT</option>
+                  <option value="event5">MATCH THE CODE REPORT</option>
+                  <option value="event6">QUIZ HOLIC REPORT</option>
+                  <option value="event7">AD ZAP REPORT</option>
+                  <option value="event8">MINI GAME REPORT</option>
+                  <option value="event9">TREASURE HUNT REPORT</option>
+                  <option value="event10">KAROKE REPORT</option>
+                  <option value="workshop1">ROBOTIC PAOCESS AUTOMATION REPORT</option>
+                  <option value="workshop2">WEBDEVELOPMENT REPORT</option>
+                  <option value="workshop3">CYBERSECURITY REPORT</option>
+                </select><br>
+                <button onclick="downloadExcel()">Download Excel</button></center>
+              </div>
+            </div>
+        </div>
+       </div>
+
+       <!--the indivudal user data-->
+       <div id="org">
+        <div class="event1" id="event1" style="display: none;">
+        <div class="event_header" id="event1_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>TECHNICAL QUIZ</h2>
+        <button class="logout_btn" id ="event1_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event1" name="Registered_user"> 
+            <button type="submit" id="user_event1btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event1btn" class="btnsearch">Download The Report Here</button>
+          
+        </form>
+          </div>
+      <table class="table project_bordered" id="event1_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Check In</th>
+           
+          </tr>
+        </thead>
+        <tbody id ="event1_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event2" id="event2" style="display: none;">
+        <div class="event_header" id="event2_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>CODEGO</h2>
+        <button class="logout_btn" id ="event2_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event2" name="Registered_user"> 
+            <button type="submit" id="user_event2btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event2btn" class="btnsearch">Download The Report Here</button>
+            
+        </form>
+          </div>
+      <table class="table project_bordered" id="event2_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event2_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event3" id="event3" style="display: none;">
+        <div class="event_header" id="event3_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>PAPER PRESENTATION</h2>
+        <button class="logout_btn" id ="event3_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event3" name="Registered_user"> 
+            <button type="submit" id="user_event3btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event3btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event3_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event3_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event4" id="event4" style="display: none;">
+        <div class="event_header" id="event4_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>TECHNICAL DEBATE</h2>
+        <button class="logout_btn" id ="event4_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event4" name="Registered_user"> 
+            <button type="submit" id="user_event4btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event4btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event4_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event4_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event5" id="event5" style="display: none;">
+        <div class="event_header" id="event5_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>MATCH THE CODE</h2>
+        <button class="logout_btn" id ="event5_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event5" name="Registered_user"> 
+            <button type="submit" id="user_event5btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event5btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event5_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event5_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event6" id="event6" style="display: none;">
+        <div class="event_header" id="event6_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>QUIZ HOLIC</h2>
+        <button class="logout_btn" id ="event6_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event6" name="Registered_user"> 
+            <button type="submit" id="user_event6btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event6btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event6_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event6_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event7" id="event7" style="display: none;">
+        <div class="event_header" id="event7_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>AD ZAP</h2>
+        <button class="logout_btn" id ="event7_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event7" name="Registered_user"> 
+            <button type="submit" id="user_event7btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event7btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event7_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event7_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event8" id="event8" style="display: none;">
+        <div class="event_header" id="event8_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>MINI GAME</h2>
+        <button class="logout_btn" id ="event8_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event8" name="Registered_user"> 
+            <button type="submit" id="user_event8btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event8btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event8_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event8_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event9" id="event9" style="display: none;">
+        <div class="event_header" id="event9_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>TREASURE HUNT</h2>
+        <button class="logout_btn" id ="event9_logout">Log Out</button>
+        
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event9" name="Registered_user"> 
+            <button type="submit" id="user_event9btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event9btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+      <table class="table project_bordered" id="event9_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+            <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event9_tbody">
+
+        </tbody>
+      </table>
+      </div>
+      <div class="event10" id="event10" style="display: none;">
+        <div class="event_header" id="event10_header">
+        <img src="sona.png" alt="Company Logo">
+        <h2>KAROKE</h2>
+        <button class="logout_btn" id ="event10_logout">Log Out</button>
+        </div>
+        <div class="searchform">
+          <form action="#" method="post">
+          <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+          <input type="text" id="user_event10" name="Registered_user"> 
+            <button type="submit" id="user_event10btn" class="btnsearch">Search</button>
+            <button type="submit" id="report_event10btn" class="btnsearch">Download The Report Here</button>
+        </form>
+          </div>
+        <table class="table project_bordered" id="event10_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Phone number</th>
+             <th>Team Number</th>
+            <th>Check In</th>
+          </tr>
+        </thead>
+        <tbody id ="event10_tbody">
+        
+        </tbody>
+        </table>
+        </div>
+        <div class="workshop1" id="workshop1" style="display: none;">
+          <div class="event_header" id="workshop1_header">
+          <img src="sona.png" alt="Company Logo">
+          <h2>ROBOTIC PAOCESS AUTOMATION</h2>
+          <button class="logout_btn" id ="workshop1_logout">Log Out</button>
+          </div>
+          <div class="searchform">
+            <form action="#" method="post">
+            <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+            <input type="text" id="user_workshop1" name="Registered_user"> 
+              <button type="submit" id="user_workshop1btn" class="btnsearch">Search</button>
+              <button type="submit" id="report_workshop1btn" class="btnsearch">Download The Report Here</button>
+          </form>
+            </div>
+          <table class="table project_bordered" id="workshop1_table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email Id</th>
+              <th>Phone number</th>
+              <th>Check In</th>
+            </tr>
+          </thead>
+          <tbody id ="workshop1_tbody">
+          
+          </tbody>
+          </table>
+          </div>
+          <div class="workshop2" id="workshop2" style="display: none;">
+            <div class="event_header" id="workshop2_header">
+            <img src="sona.png" alt="Company Logo">
+            <h2>WEBDEVELOPMENT</h2>
+            <button class="logout_btn" id ="workshop2_logout">Log Out</button>
+            </div>
+            <div class="searchform">
+              <form action="#" method="post">
+              <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+              <input type="text" id="user_workshop2" name="Registered_user"> 
+                <button type="submit" id="user_workshop2btn" class="btnsearch">Search</button>
+                <button type="submit" id="report_workshop2btn" class="btnsearch">Download The Report Here</button>
+            </form>
+              </div>
+            <table class="table project_bordered" id="workshop2_table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Phone number</th>
+                <th>Check In</th>
+              </tr>
+            </thead>
+            <tbody id ="workshop2_tbody">
+            
+            </tbody>
+            </table>
+            </div>
+            <div class="workshop3" id="workshop3" style="display: none;">
+              <div class="event_header" id="workshop3_header">
+              <img src="sona.png" alt="Company Logo">
+              <h2>CYBERSECURITY</h2>
+              <button class="logout_btn" id ="workshop3_logout">Log Out</button>
+              </div>
+              <div class="searchform">
+                <form action="#" method="post">
+                <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+                <input type="text" id="user_workshop3" name="Registered_user"> 
+                  <button type="submit" id="user_workshop3btn" class="btnsearch">Search</button>
+                  <button type="submit" id="report_workshop3btn" class="btnsearch">Download The Report Here</button>
+              </form>
+                </div>
+              <table class="table project_bordered" id="workshop3_table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email Id</th>
+                  <th>Phone number</th>
+                  <th>Check In</th>
+                </tr>
+              </thead>
+              <tbody id ="workshop3_tbody">
+              
+              </tbody>
+              </table>
+              </div>
+              <div class="paymentverify" id="paymentverify" style="display: none;">
+                <div class="event_header" id="paymentverify_header">
+                <img src="sona.png" alt="Company Logo">
+                <h2>ONLINE PAYMENT VERIFICATION</h2>
+                <button class="logout_btn" id ="paymentverify_logout">Log Out</button>
+                </div>
+                <div class="searchform">
+                  <form action="#" method="post">
+                  <label for="registered_user" id="lable_for_registered_user">Enter Registered_Student ID:</label>
+                  <input type="text" id="user_paymentverify" name="Registered_user"> 
+                    <button type="submit" id="user_paymentverifybtn" class="btnsearch">Search</button>
+                    <button type="submit" id="paymentverify_btn" class="btnsearch">Download The Report Here</button>
+                </form>
+                  </div>
+                <table class="table project_bordered" id="paymentverify_table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Phone number</th>
+                    <th>Check In</th>
+                  </tr>
+                </thead>
+                <tbody id ="paymentverify_tbody">
+                
+                </tbody>
+                </table>
+                </div>
+        <div class = "onspot_page" style="display: none;">
+          <div class="onspot_header" id="onspot_header">
+            <img src="sona.png" alt="Company Logo">
+            <h2>Onspot Registration</h2>
+            <button class="logout_btn_onspot">Log Out</button>
+          </div>
+          <form class ="onspot_class" id="onspot_class">
+            
+            <div class="onspot_pack" id="onspot_pack" style="display:block">
+              <div class="left">
+                <label class ="onspot" for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            
+                <label class ="onspot" for="email">EmailID:</label>
+                <input type="email" id="email" name="email">
+            
+                <label class ="onspot" for="dept">Department:</label>
+                <input type="text" id="dept" name="dept">
+            
+                <label class ="onspot" for="year">Year:</label>
+                <select name="year" id="year">
+                    <option value="">Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option> </select>
+            
+            
+                <label class ="onspot" for="clg">College:</label>
+                <input type="text" id="clg" name="clg">
+              </div>
+              <div class="right">
+                  <label class ="onspot" for="phone">Phone Number:</label>
+                  <input type="text" id ="phone" name="MobileNumber"  maxlength="10" />
+              
+                  <label class ="onspot" for="event">Event:</label>
+                  <select name="event" id="event" >
+                    <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                  
+                  </select>
+              <div class="dis" style="display: none;">
+                  <label class ="onspot" for="workshop">Workshop:</label>
+                  <select name="workshop" id="workshop" >
+                  <option value="not_interested">Not Interested</option> 
+                  <option value="rpa">RPA</option>
+                  <option value="web_development">Web Development</option>
+                  <option value="cyber_security">Cyber Security</option>
+                  </select>
+                </div>
+              
+                  <label class ="onspot" for="payment">Payment Type:</label>
+                  <select id="payment_type">
+                  <option value="option1">Cash</option>
+                  <option value="option2">online_payment</option>
+                  </select>
+                      
+                  <div id="textboxContainer" style="display:block;">
+                    <input type="number" id="cashentery" name="cashentery">
+                    <button  id="onspot_Submit" class="onspot_Submit">Submit</button>
+                  </div>
+                  <div id="paymentContainer" style="display:none;">
+                    <button  id="onspot_next" class="onspot_Submit">Next</button>
+                  </div>
+              </div>
+          </div>
+        
+          <div class="paymentpage" id="paymentpage" style="display: none;">
+            <div class="qrleft">
+              <div class="eventqr" id="eventqr" style="display: none;">
+                <img src="images/eventQr.jpg">
+              </div>
+              <div class="workshopqr" id="workshopqr" style="display: none;">
+                <img src="images/workshopQr.jpg">
+              </div>
+              <div class="eventworkqr" id="eventworkqr" style="display: none;">
+                <img src="images/event+workshopQr.jpg">
+              </div>
+            </div>
+            <div class="idright">
+              <div class="transpage" >
+                <label class ="onspot" for="transactionid">Enter UPI TRANSACTION ID:</label>
+                <input type="text" id ="transactionid" />
+                <button id="onspotsubmitbtn" class="onspot_Submit">Submit</button>
+              </div>
+            </div>
+             
+            
+
+          </div>  
+                  
+        
+          </form>
+          </div>
+
+      </div>
+      
+       <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyB0yNygL11li4PAXfNpmJNPmm6fP7pU3X8",
+          authDomain: "threads-23.firebaseapp.com",
+          databaseURL: "https://threads-23-default-rtdb.firebaseio.com",
+          projectId: "threads-23",
+          storageBucket: "threads-23.appspot.com",
+          messagingSenderId: "887344785570",
+          appId: "1:887344785570:web:95d87b2a8b731fe69f8ffb",
+          measurementId: "G-JPRSST3LB1"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+       </script>
+      
+       <script src="app.js"></script>
+       <script src="event1.js"></script>
+       <script src="event2.js"></script>
+       <script src="event3.js"></script>
+       <script src="event4.js"></script>
+       <script src="event5.js"></script>
+       <script src="event6.js"></script>
+       <script src="event7.js"></script>
+       <script src="event8.js"></script>
+       <script src="event9.js"></script>
+       <script src="event10.js"></script>
+       <script src="workshop1.js"></script>
+       <script src="workshop2.js"></script>
+       <script src="workshop3.js"></script>
+       <script src="paymentverify.js"></script>
+       <script src="reguser.js"></script>
+       
+ </body>  
+</html>
